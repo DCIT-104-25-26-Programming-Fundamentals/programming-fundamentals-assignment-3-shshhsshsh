@@ -42,5 +42,81 @@
 // =============================================================================
 // YOUR CODE BELOW — remove the // symbols from the scaffold and fill it in
 // =============================================================================
+const readline = require("readline-sync");
 
+// Calculate the sum of all numbers
+function calculateSum(numbers) {
+    let sum = 0;
+
+    for (let i = 0; i < numbers.length; i++) {
+        sum += numbers[i];
+    }
+
+    return sum;
+}
+
+// Calculate the average
+function calculateAverage(numbers) {
+    let sum = calculateSum(numbers);
+    return sum / numbers.length;
+}
+
+// Find the maximum number
+function calculateMaximum(numbers) {
+    let maximum = numbers[0];
+
+    for (let i = 1; i < numbers.length; i++) {
+        if (numbers[i] > maximum) {
+            maximum = numbers[i];
+        }
+    }
+
+    return maximum;
+}
+
+// Find the minimum number
+function calculateMinimum(numbers) {
+    let minimum = numbers[0];
+
+    for (let i = 1; i < numbers.length; i++) {
+        if (numbers[i] < minimum) {
+            minimum = numbers[i];
+        }
+    }
+
+    return minimum;
+}
+
+
+// Ask the user how many numbers they want to enter
+const n = Number(readline.question("How many numbers? "));
+
+// Check that N is a positive integer
+if (!Number.isInteger(n) || n <= 0) {
+    console.log("Error: Please enter a positive integer.");
+} else {
+    const numbers = [];
+
+    // Read the numbers from the user
+    for (let i = 0; i < n; i++) {
+        const number = Number(
+            readline.question(`Enter number ${i + 1}: `)
+        );
+
+        numbers.push(number);
+    }
+
+    // Calculate the results
+    const sum = calculateSum(numbers);
+    const average = calculateAverage(numbers);
+    const maximum = calculateMaximum(numbers);
+    const minimum = calculateMinimum(numbers);
+
+    // Display the results
+    console.log("\nResults:");
+    console.log(`Sum:     ${sum}`);
+    console.log(`Average: ${average}`);
+    console.log(`Maximum: ${maximum}`);
+    console.log(`Minimum: ${minimum}`);
+}
 
